@@ -1,7 +1,7 @@
 {
   "name": "hello-dsc",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "web site for dsc global, a company on product developemnt and injection mold design",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
