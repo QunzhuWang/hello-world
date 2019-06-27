@@ -1,8 +1,9 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 
 import styled, { css } from "styled-components"
+import Img from "gatsby-image"
 
 const imgUrls =[
     "https://gm.capitalone.com/static/hero.29e74461.jpg", 
@@ -102,9 +103,26 @@ class Carousel extends React.Component{
 }
 
 
-export default () =>(
+export default ({data}) =>{
+    const image = data.file.childImageSharp.fluid
+
+return(
      <Layout>
          <Carousel/>
+         <Img fluid= {image}/>
          <Link to="/contact/">Contact page</Link>
      </Layout>
 )
+}
+
+export const query = graphql`
+  query {
+    file{
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`

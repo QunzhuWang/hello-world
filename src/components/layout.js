@@ -63,10 +63,10 @@ const SubLink = styled(Link)`
     };
 `
 
-const Layout = ({ children }) =>(
+const Layout = ({ children }) =>{
+    return(
     <div>
     <Navbar>
-        
         <li><ItemLink to="/">HOME</ItemLink></li>
         <Title>
             <ItemLinkDrop>PRODUCT</ItemLinkDrop>
@@ -97,5 +97,6 @@ const Layout = ({ children }) =>(
     {children}
     </div>
 )
+}
 
 export default Layout
