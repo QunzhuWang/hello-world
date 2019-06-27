@@ -3,14 +3,7 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 
 import styled, { css } from "styled-components"
-import Img from "gatsby-image"
 
-const imgUrls =[
-    "https://gm.capitalone.com/static/hero.29e74461.jpg", 
-    "https://res.cloudinary.com/dscglobal/image/upload/c_scale,h_500/v1553960500/NEW%20WEB%20PIC/plsatic.jpg",
-    "https://res.cloudinary.com/dscglobal/image/upload/c_scale,h_500/v1553961226/NEW%20WEB%20PIC/trunkss.png",
-    "https://res.cloudinary.com/dscglobal/image/upload/c_scale,h_500/v1553954491/NEW%20WEB%20PIC/design.jpg",
-];
 
 const ImageSlide = styled.div`
     background-size: cover;
@@ -51,7 +44,7 @@ const Arrow = ({direction, clickFunction, glyph}) => (
     </ArrowIcon>
 )
 
-class Carousel extends React.Component{
+class Index extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -63,7 +56,7 @@ class Carousel extends React.Component{
     }
 
     nextSlide(){
-        const lastIndex = imgUrls.length - 1;
+        const lastIndex = this.props.data.allFile.edges.length - 1;
         const { currentImageIndex } = this.state;
         const shouldResetIndex = currentImageIndex === lastIndex;
         const index = shouldResetIndex ? 0: currentImageIndex+1;
@@ -74,7 +67,7 @@ class Carousel extends React.Component{
     }
 
     previousSlide(){
-        const lastIndex = imgUrls.length -1;
+        const lastIndex = this.props.data.allFile.edges.length -1;
         const { currentImageIndex } = this.state;
         const shouldResetIndex = currentImageIndex === 0;
         const index = shouldResetIndex ? lastIndex: currentImageIndex -1;
@@ -93,36 +86,31 @@ class Carousel extends React.Component{
 
     render(){
         return(
-            <div>
+            <Layout>
                 <Arrow direction="left" clickFunction={this.previousSlide} glyph="&#9664;" />
-                <ImageSlide url={imgUrls[this.state.currentImageIndex]} ></ImageSlide>
+                <ImageSlide url={this.props.data.allFile.edges[this.state.currentImageIndex].node.childImageSharp.fluid.src} ></ImageSlide>
                 <Arrow direction="right" clickFunction={ this.nextSlide } glyph="&#9654;" />
-            </div>
+                <Link to="/contact/">Contact page</Link>
+            </Layout>
         )
     }
 }
 
+export default Index
 
-export default ({data}) =>{
-    const image = data.file.childImageSharp.fluid
-
-return(
-     <Layout>
-         <Carousel/>
-         <Img fluid= {image}/>
-         <Link to="/contact/">Contact page</Link>
-     </Layout>
-)
-}
 
 export const query = graphql`
   query {
-    file{
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
+    allFile(filter: {extension: {eq: "jpg"}}) {
+        edges {
+          node {
+            childImageSharp {
+              fluid {
+                    src
+              }
+            }
+          }
         }
       }
-    }
   }
 `
