@@ -1,26 +1,75 @@
 import React from "react"
 import styled from "styled-components"
-import { Link } from "gatsby"
+import { Link, useStaticQuery } from "gatsby"
 import "./layout.css"
 
-const Navbar = styled.ul`
+import Img from "gatsby-image"
+
+const Navbar = styled.div`
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+`
+
+const Section = styled(Link)`
+    margin-right: 2rem;
+    padding: 0;
+`
+
+const Logo = styled(Img)`
+    display: inline-block;
+    margin: .5rem 0 0 2rem;
+`
+const Text = styled.div`
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 1.4rem;
+    margin-left: .6rem;
+`
+const Name = styled.div`
+    font-family:'Helvetica Neue', sans-serif; ;
+    font-size:1.4rem;
+    font-weight: bolder;
+    -webkit-text-stroke:1px black;
+    background-image:-webkit-linear-gradient(bottom,blue,white,blue); 
+    -webkit-background-clip:text;
+    color: transparent;
+    + div {
+        font-size:.9rem;
+        font-style:italic;
+        margin: 0;
+        padding: 0;
+        :hover{
+            color: red;
+        }
+    }
+`
+
+
+const Nav = styled.ul`
     list-style: none;
+    display: inline-block;
     >li{
         display: inline-block;
     }
-    box-shadow: 0 2px 2px #abcdef;
-    padding: 0.5rem 0 0.5rem 0;
+    padding: 1rem 2rem 0.5rem 0.8rem;
+    margin: 0;
 `
 
 const ItemLink = styled(Link)`
     text-decoration: none;
-    padding: 1rem 1rem 0.5rem 0.5rem;
+    color: black;
+    padding: 1rem 2rem 0.5rem 0.8rem;
     :hover{
         background-color: gray;
     }
 `
 
-const ItemLinkDrop = styled(ItemLink)`
+const Span = styled.span`
+    padding: 1rem 2rem 0.5rem 0.8rem;
+    :hover{
+        background-color: gray;
+    }
     &::after {
         display: inline-block;
         vertical-align: 0.255em;
@@ -46,16 +95,15 @@ const Menu = styled.ul`
     margin-top: 0.5rem;
     padding: 0;
     width: 11rem;
-    box-shadow: 2px 2px 2px #eeeeee;
 `
 
 const SubLink = styled(Link)`
     display:inline-block;
     text-decoration:none;
-    padding: 0.5rem;
     border-bottom: 1px dotted gray;
     width:10rem;
     color:black;
+    padding: 0.5rem 0.5rem 0.5rem 0.8rem;
     background-color:white;
     &:hover{
         text-decoration: none;
@@ -64,38 +112,58 @@ const SubLink = styled(Link)`
 `
 
 const Layout = ({ children }) =>{
-    return(
-    <div>
-    <Navbar>
-        <li><ItemLink to="/">HOME</ItemLink></li>
-        <Title>
-            <ItemLinkDrop>PRODUCT</ItemLinkDrop>
-            <Menu>
-                <li><SubLink>Lighting</SubLink></li>
-                <li><SubLink>Tools</SubLink></li>
-                <li><SubLink>Others</SubLink></li>
-            </Menu>
-        </Title>
-        <Title>
-            <ItemLinkDrop>MOLD</ItemLinkDrop>
-            <Menu>
-                <li><SubLink>Mold design</SubLink></li>
-                <li><SubLink>Mold manufacture</SubLink></li>
-            </Menu>
-        </Title>
-        <Title>
-            <ItemLinkDrop>SERVICE</ItemLinkDrop>
-            <Menu>
-                <li><SubLink>Product development</SubLink></li>
-                <li><SubLink>Plastic injection mold</SubLink></li>
-                <li><SubLink>Project management</SubLink></li>
-            </Menu>
-        </Title>
-        <li><ItemLink>BLOG</ItemLink></li>
-        <li><ItemLink to="/contact/">CONTACT</ItemLink></li>
-    </Navbar>
+    const { imageSharp } = useStaticQuery(
+        graphql`
+            query {
+                imageSharp {
+                    fixed (width: 60){
+                        ...GatsbyImageSharpFixed
+                    }
+                }
+            }          
+        `
+    )
+return(
+    <>
+        <Navbar>
+            <Section>
+                <Logo fixed={imageSharp.fixed} />
+                <Text>
+                    <Name>DSC GLOBAL LLC</Name>
+                    <div>Dignity, Sustainability & Capability</div>
+                </Text>
+            </Section>
+            <Nav>
+                <li><ItemLink>HOME</ItemLink></li>
+                <Title>
+                    <Span>PRODUCT</Span>
+                    <Menu>
+                        <li><SubLink>Lighting</SubLink></li>
+                        <li><SubLink>Tools</SubLink></li>
+                        <li><SubLink>Others</SubLink></li>
+                    </Menu>
+                </Title>
+                <Title>
+                    <Span>MOLD</Span>
+                    <Menu>
+                        <li><SubLink>Mold design</SubLink></li>
+                        <li><SubLink>Mold manufacture</SubLink></li>
+                    </Menu>
+                </Title>
+                <Title>
+                    <Span>SERVICE</Span>
+                    <Menu>
+                        <li><SubLink>Product development</SubLink></li>
+                        <li><SubLink>Plastic injection mold</SubLink></li>
+                        <li><SubLink>Project management</SubLink></li>
+                    </Menu>
+                </Title>
+                <li><ItemLink>BLOG</ItemLink></li>
+                <li><ItemLink>CONTACT</ItemLink></li>
+            </Nav>
+        </Navbar>
     {children}
-    </div>
+    </>
 )
 }
 
