@@ -66,13 +66,14 @@ const SubLink = styled(Link)`
 const Layout = ({ children }) =>(
     <div>
     <Navbar>
+        
         <li><ItemLink to="/">HOME</ItemLink></li>
         <Title>
             <ItemLinkDrop>PRODUCT</ItemLinkDrop>
             <Menu>
                 <li><SubLink>Lighting</SubLink></li>
                 <li><SubLink>Tools</SubLink></li>
-                <li><SubLink>others</SubLink></li>
+                <li><SubLink>Others</SubLink></li>
             </Menu>
         </Title>
         <Title>
@@ -85,13 +86,13 @@ const Layout = ({ children }) =>(
         <Title>
             <ItemLinkDrop>SERVICE</ItemLinkDrop>
             <Menu>
-                <li><SubLink>product development</SubLink></li>
-                <li><SubLink>plastic injection mold</SubLink></li>
-                <li><SubLink>project management</SubLink></li>
+                <li><SubLink>Product development</SubLink></li>
+                <li><SubLink>Plastic injection mold</SubLink></li>
+                <li><SubLink>Project management</SubLink></li>
             </Menu>
         </Title>
         <li><ItemLink>BLOG</ItemLink></li>
-        <li><ItemLink>CONTACT</ItemLink></li>
+        <li><ItemLink to="/contact/">CONTACT</ItemLink></li>
     </Navbar>
     {children}
     </div>
