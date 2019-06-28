@@ -10,6 +10,10 @@ const Navbar = styled.div`
     align-items: flex-end;
     justify-content: space-around;
     flex-wrap: wrap;
+    min-height: 5rem;
+    width:100%;
+    position: fixed;
+    background-color: white;
 `
 
 const Button = styled.button`
@@ -23,7 +27,7 @@ const Button = styled.button`
     }
     border: 1px solid #dae0e5;
     background-color: transparent;
-    @media (min-width: 710px){
+    @media (min-width: 700px){
       display: none;
     }
 `
@@ -44,11 +48,11 @@ const Text = styled.div`
     margin-left: .6rem;
 `
 const Name = styled.div`
-    font-family:'Helvetica Neue', sans-serif; ;
+    font-family:'Helvetica Neue', sans-serif; 
     font-size:1.4rem;
     font-weight: bolder;
     -webkit-text-stroke:1px black;
-    background-image:-webkit-linear-gradient(bottom,blue,white,blue); 
+    background-image:-webkit-linear-gradient(bottom,blue,white,#abcdef); 
     -webkit-background-clip:text;
     color: transparent;
     + div {
@@ -62,29 +66,28 @@ const Name = styled.div`
     }
 `
 
-
 const Nav = styled.ul`
     display: flex;
     flex-wrap: wrap;
     list-style: none;
     >li{
         display: block;
-        @media (max-width: 710px){
+        @media (max-width: 700px){
             height: 2.8rem;
         } 
     }
 
+
     ${(props)=>(
         props.hidden?css`display:none;`:
         css`
-        @media (max-width:710px){
-            display:block;
+        @media (max-width:700px){
+            display:flex;
         }
-        
         `
     )}
 
-    @media(min-width:710px){
+    @media(min-width:700px){
         display:flex;
     }
 
@@ -129,7 +132,7 @@ const Menu = styled.ul`
     display: none;
     list-style: none;
     position: absolute;
-    margin-top: 0.5rem;
+    margin-top: 0.49rem;
     padding: 0;
     width: 11rem;
 `
@@ -138,7 +141,7 @@ const SubLink = styled(Link)`
     display:inline-block;
     text-decoration:none;
     border-bottom: 1px dotted gray;
-    width:10rem;
+    width:15rem;
     color:black;
     padding: 0.5rem 0.5rem 0.5rem 0.8rem;
     background-color:white;
@@ -146,6 +149,11 @@ const SubLink = styled(Link)`
         text-decoration: none;
         background-color: gray;
     };
+`
+
+const Page = styled.div`
+    display: flex;
+    flex-direction: column;
 `
 
 const Company = ()=>{
@@ -178,6 +186,15 @@ class NavBar extends React.Component{
         this.state = {
             hidden: true,
         }
+        this.updateDimension = this.updateDimension.bind(this);
+    }
+
+    updateDimension(){
+        if(window.innerWidth<"700"){
+            this.setState({
+                hidden: true
+            })
+        }
     }
 
     handleOpenCloseNavbar(){
@@ -186,42 +203,53 @@ class NavBar extends React.Component{
         });
     }
 
+    componentDidMount(){
+        window.addEventListener("resize", this.updateDimension);
+    }
+    componentWillUnmount(){
+        window.removeEventListener("resize", this.updateDimension);
+    }
+
     render(){
         const {hidden} = this.state
-        console.log(hidden)
         return(
-            <Navbar>
-            <Company />
-            <Button onClick ={()=>this.handleOpenCloseNavbar()}><span>&#9776;</span></Button>
-            <Nav hidden={hidden}>
-                <li><ItemLink>HOME</ItemLink></li>
-                <Title>
-                    <Span>PRODUCT</Span>
-                    <Menu>
-                        <li><SubLink>Lighting</SubLink></li>
-                        <li><SubLink>Tools</SubLink></li>
-                        <li><SubLink>Others</SubLink></li>
-                    </Menu>
-                </Title>
-                <Title>
-                    <Span>MOLD</Span>
-                    <Menu>
-                        <li><SubLink>Mold design</SubLink></li>
-                        <li><SubLink>Mold manufacture</SubLink></li>
-                    </Menu>
-                </Title>
-                <Title>
-                    <Span>SERVICE</Span>
-                    <Menu>
-                        <li><SubLink>Product development</SubLink></li>
-                        <li><SubLink>Plastic injection mold</SubLink></li>
-                        <li><SubLink>Project management</SubLink></li>
-                    </Menu>
-                </Title>
-                <li><ItemLink>BLOG</ItemLink></li>
-                <li><ItemLink>CONTACT</ItemLink></li>
-            </Nav>
-        </Navbar>
+                <Navbar>
+                <Company />
+                <Button onClick ={()=>this.handleOpenCloseNavbar()}><span>&#9776;</span></Button>
+                <Nav hidden={hidden}>
+                    <li><ItemLink>HOME</ItemLink></li>
+                    <Title>
+                        <Span>PRODUCT</Span>
+                        <Menu>
+                            <li><SubLink>LED Lighting</SubLink></li>
+                            <li><SubLink>Tools & Equipment</SubLink></li>
+                            <li><SubLink>Automobile Parts</SubLink></li>
+                            <li><SubLink>Consumer Goods</SubLink></li>
+                        </Menu>
+                    </Title>
+                    <Title>
+                        <Span>MOLD</Span>
+                        <Menu>
+                            <li><SubLink>Automobile Injection Mold</SubLink></li>
+                            <li><SubLink>Consumer Plastic Injection Mold</SubLink></li>
+                            <li><SubLink>Plastic Blowing Mold</SubLink></li>
+                            <li><SubLink>Plastic Extrusion Mold</SubLink></li>
+                        </Menu>
+                    </Title>
+                    <Title>
+                        <Span>SERVICE</Span>
+                        <Menu>
+                            <li><SubLink>Structure Design & Analysis</SubLink></li>
+                            <li><SubLink>Plastic Injection Simulation</SubLink></li>
+                            <li><SubLink>Fluid & Thermal Simulation</SubLink></li>
+                            <li><SubLink>Optical Analysis and Optimization</SubLink></li>
+                            <li><SubLink>Outsourcing & Project Management</SubLink></li>
+                        </Menu>
+                    </Title>
+                    <li><ItemLink>BLOG</ItemLink></li>
+                    <li><ItemLink to="/contact/">CONTACT</ItemLink></li>
+                </Nav>
+            </Navbar>
         )
     }
 }
@@ -230,10 +258,12 @@ class NavBar extends React.Component{
 const Layout = ({ children }) =>{
 
 return(
-    <>
-    <NavBar />
-    {children}
-    </>
+    <Page>
+        <NavBar />
+        <main style={{marginTop:"5rem"}}>
+            {children}
+        </main>
+    </Page>
 )
 }
 
