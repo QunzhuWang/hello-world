@@ -64,7 +64,7 @@ class Brands extends React.Component {
         }}
       >
         {showPics.map((image, index) => (
-          <img style={{ height: "280px", marginTop:"1rem"}} key={index} src={image} alt="" />
+          <img style={{ height: "225px", marginTop:"1rem"}} key={index} src={image} alt="" />
         ))}
       </div>
     )
