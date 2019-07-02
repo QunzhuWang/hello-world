@@ -47,7 +47,7 @@ const Column = styled.div`
   @media (min-width: 992px) {
     flex: ${props => calcFlex(props.lg)};
   }
-  @media (min-width: 1200px) {
+  @media (min-width: 1440px) {
     flex: ${props => calcFlex(props.xl)};
   }
 `

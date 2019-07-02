@@ -13,7 +13,7 @@ const Navbar = styled.div`
   min-height: 5rem;
   width: 100%;
   position: fixed;
-  background-color: rgba(240,240,240,0.9);
+  background-color: rgba(240,240,240,0.95);
 `
 
 const Button = styled.button`
@@ -28,7 +28,7 @@ const Button = styled.button`
   }
   border: 1px solid #dae0e5;
   background-color: transparent;
-  @media (min-width: 720px) {
+  @media (min-width: 800px) {
     display: none;
   }
 `
@@ -69,7 +69,7 @@ const Nav = styled.ul`
   list-style: none;
   > li {
     display: block;
-    @media (max-width: 720px) {
+    @media (max-width: 800px) {
       height: 2.8rem;
     }
   }
@@ -80,12 +80,12 @@ const Nav = styled.ul`
           display: none;
         `
       : css`
-          @media (max-width: 720px) {
+          @media (max-width: 800px) {
             display: flex;
           }
         `}
 
-  @media(min-width:720px) {
+  @media(min-width:800px) {
     display: flex;
   }
 
@@ -140,7 +140,7 @@ const SubLink = styled(Link)`
   width: 16rem;
   color: black;
   padding: 0.5rem 0.5rem 0.5rem 0.8rem;
-  background-color: rgba(240,240,240,0.9);
+  background-color: rgba(240,240,240,0.95);
   &:hover {
     text-decoration: none;
     background-color: gray;
@@ -177,7 +177,7 @@ class NavBar extends React.Component {
   }
 
   updateDimension() {
-    if (window.innerWidth < "700") {
+    if (window.innerWidth < "800") {
       this.setState({
         hidden: true,
       })
@@ -199,6 +199,7 @@ class NavBar extends React.Component {
 
   render() {
     const { hidden } = this.state
+    console.log(hidden)
     return (
       <Navbar>
         <Company name="DSC GLobal LLC"/>

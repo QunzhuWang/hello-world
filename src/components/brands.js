@@ -5,6 +5,7 @@ class Brands extends React.Component {
     super(props)
     this.state = {
       currentImageIndex: 0,
+      number: 6,
       images: [
         "https://res.cloudinary.com/dscglobal/image/upload/c_scale,h_100/v1553840577/brands/ford.png",
         "https://res.cloudinary.com/dscglobal/image/upload/c_scale,h_100/v1553840576/brands/general_motor.png",
@@ -16,6 +17,7 @@ class Brands extends React.Component {
       ],
     }
     this.nextSlide = this.nextSlide.bind(this)
+    this.updateDimension = this.updateDimension.bind(this)
   }
 
   nextSlide() {
@@ -30,27 +32,51 @@ class Brands extends React.Component {
     this.setState({
       currentImageIndex: index,
     })
+
+  }
+
+  updateDimension() {
+    if (window.innerWidth < "600") {
+      this.setState({
+        number: 2,
+      })
+    } else if (window.innerWidth < "800") {
+      this.setState({
+        number: 3,
+      })
+    } else if(window.innerWidth < "1100"){
+      this.setState({
+        number: 5,
+      })
+    } else{
+      this.setState({
+        number: 6,
+      })
+    }
   }
 
   componentDidMount() {
-    //this.showBrands = setInterval(() => this.nextSlide(), 2000)
+    this.showBrands = setInterval(() => this.nextSlide(), 2000)
+    window.addEventListener("resize", this.updateDimension)
   }
 
   componentWillUnmount() {
-    //clearInterval(this.showBrands)
+    window.removeEventListener("resize", this.updateDimension)
+    clearInterval(this.showBrands)
   }
 
   render() {
     //get current image index
     const index = this.state.currentImageIndex
+    const number = this.state.number
     //create a new array with 6 pics from the source images
-    let showPics = this.state.images.slice(index, index + 6)
+    let showPics = this.state.images.slice(index, index + number)
     //check the length of the new array (it's less than 6 when index is near the end of the array)
-    if (showPics.length < 6) {
+    if (showPics.length < number) {
       //if the first five pics is lower than 6 images
       //appending missing images from the beginning of the original array
       showPics = showPics.concat(
-        this.state.images.slice(0, 6 - showPics.length)
+        this.state.images.slice(0, number - showPics.length)
       )
     }
 

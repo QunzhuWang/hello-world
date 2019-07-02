@@ -10,7 +10,7 @@ import tooling from "../images/svg/tooling.svg"
 import service from "../images/svg/service.svg"
 
 import Brand from "../components/brands"
-import Works from "../components/works"
+import Card from "../components/card"
 
 const ImageSlide = styled.div`
     background-size: cover;
@@ -193,8 +193,8 @@ class Index extends React.Component {
                 <p style={{ fontSize: "90%", wordBreak: "keep-all" }}>
                   Look at the product as artist. Build the product as engineer.
                   From industrial to consumer, we designed kinds of creative
-                  products such as led lighting and led singal light products,
-                  luggage trunk, medical device components.
+                  products such as led lighting and tools & equipment,
+                  luggage trunk, medical device components and so on.
                 </p>
               </div>
             </div>
@@ -313,11 +313,11 @@ class Index extends React.Component {
               textAlign: "center",
             }}
           >
-            Our works
+            Our Focus & Service
           </p>
         </Row>
+    <Card />
 
-        <Works />
 
         <Row style={{ justifyContent: "center",backgroundColor: "#eee" }}>
           <p
