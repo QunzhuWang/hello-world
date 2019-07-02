@@ -1,9 +1,9 @@
 import React from "react"
 import styled, { css } from "styled-components"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { Link } from "gatsby"
 import "./layout.css"
-
-import Img from "gatsby-image"
+import {Row, Column} from "../pages/grid"
+import Stamp from "../images/logo.png"
 
 const Navbar = styled.div`
   display: flex;
@@ -13,7 +13,7 @@ const Navbar = styled.div`
   min-height: 5rem;
   width: 100%;
   position: fixed;
-  background-color: white;
+  background-color: rgba(240,240,240,0.9);
 `
 
 const Button = styled.button`
@@ -28,7 +28,7 @@ const Button = styled.button`
   }
   border: 1px solid #dae0e5;
   background-color: transparent;
-  @media (min-width: 700px) {
+  @media (min-width: 720px) {
     display: none;
   }
 `
@@ -38,14 +38,10 @@ const Section = styled(Link)`
   padding: 0;
 `
 
-const Logo = styled(Img)`
-  display: inline-block;
-  margin: 0.5rem 0 0 2rem;
-`
 const Text = styled.div`
   display: inline-block;
   vertical-align: top;
-  margin-top: 1.4rem;
+  margin-top: 0.9rem;
   margin-left: 0.6rem;
 `
 const Name = styled.div`
@@ -53,7 +49,7 @@ const Name = styled.div`
   font-size: 1.4rem;
   font-weight: bolder;
   -webkit-text-stroke: 1px black;
-  background-image: -webkit-linear-gradient(bottom, blue, white, #abcdef);
+  background-image: -webkit-linear-gradient(bottom, blue, white, blue);
   -webkit-background-clip: text;
   color: transparent;
   + div {
@@ -73,7 +69,7 @@ const Nav = styled.ul`
   list-style: none;
   > li {
     display: block;
-    @media (max-width: 700px) {
+    @media (max-width: 720px) {
       height: 2.8rem;
     }
   }
@@ -84,12 +80,12 @@ const Nav = styled.ul`
           display: none;
         `
       : css`
-          @media (max-width: 700px) {
+          @media (max-width: 720px) {
             display: flex;
           }
         `}
 
-  @media(min-width:700px) {
+  @media(min-width:720px) {
     display: flex;
   }
 
@@ -141,10 +137,10 @@ const SubLink = styled(Link)`
   display: inline-block;
   text-decoration: none;
   border-bottom: 1px dotted gray;
-  width: 15rem;
+  width: 16rem;
   color: black;
   padding: 0.5rem 0.5rem 0.5rem 0.8rem;
-  background-color: white;
+  background-color: rgba(240,240,240,0.9);
   &:hover {
     text-decoration: none;
     background-color: gray;
@@ -156,28 +152,20 @@ const Page = styled.div`
   flex-direction: column;
 `
 
-const Company = () => {
-  const { imageSharp } = useStaticQuery(
-    graphql`
-      query {
-        imageSharp {
-          fixed(width: 60) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-    `
-  )
-  return (
+const Img =styled.img`
+  width: 60px;
+  ${props=>props.size && css`width: 40px;`}
+`
+
+const Company = (props) => (
     <Section>
-      <Logo fixed={imageSharp.fixed} />
+      <Img size={props.size} src={Stamp} alt="" />
       <Text>
-        <Name>DSC GLOBAL LLC</Name>
+        <Name>{props.name}</Name>
         <div>Dignity, Sustainability & Capability</div>
       </Text>
     </Section>
   )
-}
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -213,7 +201,7 @@ class NavBar extends React.Component {
     const { hidden } = this.state
     return (
       <Navbar>
-        <Company />
+        <Company name="DSC GLobal LLC"/>
         <Button onClick={() => this.handleOpenCloseNavbar()}>
           <span>&#9776;</span>
         </Button>
@@ -225,16 +213,13 @@ class NavBar extends React.Component {
             <Span>PRODUCT</Span>
             <Menu>
               <li>
-                <SubLink>LED Lighting</SubLink>
+                <SubLink to="/product/">Product We Design</SubLink>
               </li>
               <li>
-                <SubLink>Tools & Equipment</SubLink>
+                <SubLink to="/productflow/">Product Design Flow</SubLink>
               </li>
               <li>
-                <SubLink>Automobile Parts</SubLink>
-              </li>
-              <li>
-                <SubLink>Consumer Goods</SubLink>
+                <SubLink to="/productmanage/">Product Project Manager</SubLink>
               </li>
             </Menu>
           </Title>
@@ -242,16 +227,13 @@ class NavBar extends React.Component {
             <Span>MOLD</Span>
             <Menu>
               <li>
-                <SubLink>Automobile Injection Mold</SubLink>
+                <SubLink to="/injectionmold/">Injection Mold We Design</SubLink>
               </li>
               <li>
-                <SubLink>Consumer Plastic Injection Mold</SubLink>
+                <SubLink to="/injectionflow/">Injection Mold Design Flow</SubLink>
               </li>
               <li>
-                <SubLink>Plastic Blowing Mold</SubLink>
-              </li>
-              <li>
-                <SubLink>Plastic Extrusion Mold</SubLink>
+                <SubLink to="/moldmanufacture/">Injection Mold Manufacture</SubLink>
               </li>
             </Menu>
           </Title>
@@ -259,24 +241,18 @@ class NavBar extends React.Component {
             <Span>SERVICE</Span>
             <Menu>
               <li>
-                <SubLink>Structure Design & Analysis</SubLink>
+                <SubLink to="/mechanical/">Mechanical Design & Analysis</SubLink>
               </li>
               <li>
-                <SubLink>Plastic Injection Simulation</SubLink>
+                <SubLink to="/moldflow/">Plastic Injection Simulation</SubLink>
               </li>
               <li>
-                <SubLink>Fluid & Thermal Simulation</SubLink>
-              </li>
-              <li>
-                <SubLink>Optical Analysis and Optimization</SubLink>
-              </li>
-              <li>
-                <SubLink>Outsourcing & Project Management</SubLink>
+                <SubLink to="/fluid/">Fluid & Thermal Simulation</SubLink>
               </li>
             </Menu>
           </Title>
           <li>
-            <ItemLink>BLOG</ItemLink>
+            <ItemLink to="/blog/">BLOG</ItemLink>
           </li>
           <li>
             <ItemLink to="/contact/">CONTACT</ItemLink>
@@ -288,9 +264,45 @@ class NavBar extends React.Component {
 }
 
 const Footer = ()=>(
-  <div style={{textAlign:"center",backgroundColor:"#eee", fontSize:"90%"}}>
+  <>
+  <div style={{backgroundColor:"#eee"}}>
+  <Row style={{ margin:"0 auto",paddingTop:"2rem"}}>
+  <Column sm={12} md={12} lg={4} xl={4}>
+      <ul style={{listStyle:"none"}}>
+        <li >
+          <Section>
+                  <Img style={{width:"40px"}} src={Stamp} alt="" />
+                  <div style={{display:"inline-block",verticalAlign:"top", marginTop:"0.5rem",marginLeft:"0.4rem", fontWeight:"bold"}}>
+                    <div>DSC Global LLC</div>
+                    <div style={{fontSize: "50%"}}>Dignity, Sustainability & Capability</div>
+                  </div>
+                </Section></li>
+        <li style={{display:"block", color:"gray",width:"90%", padding:"0.3rem",fontSize:"80%",wordBreak: "keep-all"}}><span>Address:</span> Room 7198, Yikang Business Building 33, Huarong Road, Longhua District, Shenzhen, Guangdong province, China</li>
+        <li style={{display:"block",color:"gray", padding:"0.3rem",fontSize:"80%"}}><span>Email:</span> <a style={{textDecoration:"none", color:"gray"}} href="mailto:dan.wu@dscgloballlc.com">dan.wu@dscgloballlc.com</a></li>
+      </ul>
+    </Column>
+    <Column sm={12} md={6} lg={4} xl={4} >
+      <ul style={{listStyle:"none", fontSize:"90%"}}>
+        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/Product customize">Product customize</Link></li>
+        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/Product improvement">Product improvement</Link></li>
+        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/Enginnering service">Enginnering service</Link></li>
+        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/Tech assistant">Technical assistant</Link></li>
+      </ul>
+    </Column>
+    <Column sm={12} md={6} lg={4} xl={4} >
+      <ul style={{listStyle:"none", fontSize:"90%"}}>
+        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/Mold design">Mold design</Link></li>
+        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/Mold manufacture">Mold manufacture</Link></li>
+        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/Moldflow simulation">Moldflow simulation</Link></li>
+        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/Mold project manage">Mold project manage</Link></li>
+      </ul>
+    </Column>
+  </Row>
+  <div style={{textAlign:"center",color:"gray",backgroundColor:"#eee", fontSize:"75%",padding:"1rem"}}>
      © Copyright {new Date().getFullYear()} | Web Designed by DSC Global LLC. All rights reserved. 
   </div>
+  </div>
+  </>
 )
 
 const Layout = ({ children }) => {

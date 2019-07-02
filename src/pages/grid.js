@@ -36,7 +36,8 @@ const Column = styled.div`
   padding-left: 15px;
   flex: 0 0 100%;
   overflow: hidden;
-  word-break: break-all;
+  word-break: keep-all;
+  text-align:justify;
   @media (min-width: 480px) {
     flex: ${props => calcFlex(props.sm)};
   }
@@ -55,6 +56,7 @@ const Row = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
+
 `
 
 export { Column, Row }

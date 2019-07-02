@@ -112,7 +112,7 @@ class Index extends React.Component {
 
   render() {
     return (
-      <Layout>
+      <Layout >
         <Arrow
           direction="left"
           clickFunction={this.previousSlide}
@@ -135,7 +135,6 @@ class Index extends React.Component {
           clickFunction={this.nextSlide}
           glyph="&#9654;"
         />
-
 
         <Row style={{ justifyContent: "center" }}>
           <p
@@ -191,7 +190,7 @@ class Index extends React.Component {
                   textAlign: "center",
                 }}
               >
-                <p style={{ fontSize: "80%", wordBreak: "keep-all" }}>
+                <p style={{ fontSize: "90%", wordBreak: "keep-all" }}>
                   Look at the product as artist. Build the product as engineer.
                   From industrial to consumer, we designed kinds of creative
                   products such as led lighting and led singal light products,
@@ -243,7 +242,7 @@ class Index extends React.Component {
                   textAlign: "center",
                 }}
               >
-                <p style={{ fontSize: "80%", wordBreak: "keep-all" }}>
+                <p style={{ fontSize: "90%", wordBreak: "keep-all" }}>
                   We are excel in plastic products toolings fabrication such as
                   plastic injection mold, plastic extrusion mold. We ensure the
                   quality by envolving us in every build stages: design,
@@ -295,7 +294,7 @@ class Index extends React.Component {
                   textAlign: "center",
                 }}
               >
-                <p style={{ fontSize: "80%", wordBreak: "keep-all" }}>
+                <p style={{ fontSize: "90%", wordBreak: "keep-all" }}>
                   We serves our clients globally in three time zones (USA,
                   China, Europe). A multi-functional team is ready to provide
                   highly tailored engineering service and to fully support and
@@ -318,7 +317,7 @@ class Index extends React.Component {
           </p>
         </Row>
 
-<Works />
+        <Works />
 
         <Row style={{ justifyContent: "center",backgroundColor: "#eee" }}>
           <p
@@ -366,7 +365,6 @@ class Index extends React.Component {
         </Row>
 
         <Brand />
-
       </Layout>
     )
   }
