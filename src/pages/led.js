@@ -1,6 +1,6 @@
 import React from "react"
 import Layout from "../components/layout"
-import { Row, Column} from "./grid"
+import { Row, Column} from "../components/grid"
 
 import led01 from "../pics/led01.png"
 import led02 from "../pics/led02.png"

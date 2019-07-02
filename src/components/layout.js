@@ -2,7 +2,7 @@ import React from "react"
 import styled, { css } from "styled-components"
 import { Link } from "gatsby"
 import "./layout.css"
-import {Row, Column} from "../pages/grid"
+import {Row, Column} from "../components/grid"
 import Stamp from "../images/logo.png"
 
 const Navbar = styled.div`
@@ -224,7 +224,7 @@ class NavBar extends React.Component {
             </Menu>
           </Title>
           <Title>
-            <Span>MOLD</Span>
+            <Span>MOLD DESIGN</Span>
             <Menu>
               <li>
                 <SubLink to="/injectionmold/">Injection Mold We Design</SubLink>
@@ -283,18 +283,18 @@ const Footer = ()=>(
     </Column>
     <Column sm={12} md={6} lg={4} xl={4} >
       <ul style={{listStyle:"none", fontSize:"90%"}}>
-        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/Product customize">Product customize</Link></li>
-        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/Product improvement">Product improvement</Link></li>
-        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/Enginnering service">Enginnering service</Link></li>
-        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/Tech assistant">Technical assistant</Link></li>
+        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/">Product customize</Link></li>
+        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/">Product improvement</Link></li>
+        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/">Enginnering service</Link></li>
+        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/">Technical assistant</Link></li>
       </ul>
     </Column>
     <Column sm={12} md={6} lg={4} xl={4} >
       <ul style={{listStyle:"none", fontSize:"90%"}}>
-        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/Mold design">Mold design</Link></li>
-        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/Mold manufacture">Mold manufacture</Link></li>
-        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/Moldflow simulation">Moldflow simulation</Link></li>
-        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/Mold project manage">Mold project manage</Link></li>
+        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/">Mold design</Link></li>
+        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/">Mold manufacture</Link></li>
+        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/">Moldflow simulation</Link></li>
+        <li><Link style={{textDecoration:"none", display:"inline-block", color:"gray", padding:"0.3rem"}} to="/">Mold project manage</Link></li>
       </ul>
     </Column>
   </Row>
