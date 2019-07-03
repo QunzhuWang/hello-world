@@ -5,6 +5,12 @@ import {Link} from "gatsby"
 
 import Lighting from "../pics/lighting.png"
 import Mold from "../pics/mold.png"
+import Tool from "../pics/tool.png"
+import Consumer from "../pics/consumer.png"
+import Structure from "../pics/structure.png"
+import Fluid from "../pics/fluid.png"
+import Moldflow from "../pics/moldflow.png"
+import Manage from "../pics/manage.png"
 
 const Wrapper = styled.div`
     margin: 1rem 0rem;
@@ -65,33 +71,33 @@ const Card = ()=>(
                     <CardBody>
                         <CardTitle>Injection mold</CardTitle>
                         <CardText>Plastic Injection mold design and manufacture, as one of the key businesses of DSC GLobal. Keep growing with high speed in recent year. </CardText>
-                        <Link to="">More>></Link>
+                        <Link to="/injectionmold/">More>></Link>
                     </CardBody>
                 </Wrapper>
             </Column>
             <Column sm={12} md={6} lg={4} xl={3}>
                 <Wrapper>
-                    <CardImageHeader src={Lighting} alt=""/>
+                    <CardImageHeader src={Tool} alt=""/>
                     <CardBody>
                         <CardTitle>Tools and equipment</CardTitle>
                         <CardText>DSC Global helped client in developing kinds of tools and equipment. It represents DSC Global's innovation and technology integration ability.</CardText>
-                        <Link to="">More>></Link>
+                        <Link to="/tool/">More>></Link>
                     </CardBody>
                 </Wrapper>
             </Column>
             <Column sm={12} md={6} lg={4} xl={3}>
                 <Wrapper>
-                    <CardImageHeader src={Lighting} alt=""/>
+                    <CardImageHeader src={Consumer} alt=""/>
                     <CardBody>
                         <CardTitle>Consumer Goods</CardTitle>
                         <CardText>DSC Global is trying to extend its design ability from industrial to consumer goods. We are designing living goods and consumer electronics.    </CardText>
-                        <Link to="">More>></Link>
+                        <Link to="/consumer/">More>></Link>
                     </CardBody>
                 </Wrapper>
             </Column>
             <Column sm={12} md={6} lg={4} xl={3}>
                 <Wrapper>
-                    <CardImageHeader src={Lighting} alt=""/>
+                    <CardImageHeader src={Structure} alt=""/>
                     <CardBody>
                         <CardTitle>Mechanical desing & analysis</CardTitle>
                         <CardText>More than just draft drawings. We ensure the design quality and functions implementation by structure analysis and mechanism simulation.   </CardText>
@@ -102,10 +108,10 @@ const Card = ()=>(
 
             <Column sm={12} md={6} lg={4} xl={3}>
                 <Wrapper>
-                    <CardImageHeader src={Lighting} alt=""/>
+                    <CardImageHeader src={Fluid} alt=""/>
                     <CardBody>
                         <CardTitle>Fluid & thermal simulation</CardTitle>
-                        <CardText>To solve the potential problem for LED lighting and injection mold. We developed fluid and thermal simualtion technology. </CardText>
+                        <CardText>To solve the potential problem for LED lighting and injection mold cooling. We developed fluid and thermal simualtion technology. </CardText>
                         <Link to="">More>></Link>
                     </CardBody>
                 </Wrapper>
@@ -113,7 +119,7 @@ const Card = ()=>(
 
             <Column sm={12} md={6} lg={4} xl={3}>
                 <Wrapper>
-                    <CardImageHeader src={Lighting} alt=""/>
+                    <CardImageHeader src={Moldflow} alt=""/>
                     <CardBody>
                         <CardTitle>Moldflow simulation</CardTitle>
                         <CardText>To provide our cilents with high quality plastic parts. We use Moldflow simulation to come up with optimized injection plan with low cost.   </CardText>
@@ -124,10 +130,10 @@ const Card = ()=>(
 
             <Column sm={12} md={6} lg={4} xl={3}>
                 <Wrapper>
-                    <CardImageHeader src={Lighting} alt=""/>
+                    <CardImageHeader src={Manage} alt=""/>
                     <CardBody>
                         <CardTitle>Project management</CardTitle>
-                        <CardText>For both product and mold project, DSC Global is ready and capable to solve problem efficiently to ensure the delivery.    </CardText>
+                        <CardText>For both product and mold project, DSC Global is ready and capable to come up with ideas and solve problem efficiently to ensure the delivery.    </CardText>
                         <Link to="">More>></Link>
                     </CardBody>
                 </Wrapper>

@@ -41,9 +41,6 @@ const Led = () =>(
                     <Column sm={12} md={6} lg={6} xl={4}>
                         <img style={{width:"auto",height:"auto",maxWidth:"100%",maxHeight:"100%"}} src={led02} alt=""/>
                     </Column>
-                    <Column sm={11} md={6} lg={6} xl={4}>
-                        
-                    </Column>
             </Row>
 
             <h2 style={{padding:"0 15px"}}>Electrical design</h2>
@@ -61,9 +58,6 @@ const Led = () =>(
 
                         <Column sm={12} md={6} lg={6} xl={4}>
                             <img style={{width:"auto",height:"auto",maxWidth:"100%",maxHeight:"100%"}} src={led05} alt=""/>
-                        </Column>
-                        <Column sm={12} md={6} lg={6} xl={4}>
-                           
                         </Column>
 
                 </Row>
